@@ -1,31 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://b21eanp0cffs3"]
+[gd_scene load_steps=4 format=3 uid="uid://b21eanp0cffs3"]
 
 [ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_nk6hs"]
 [ext_resource type="Script" path="res://Scenes/Main/player_manager.gd" id="2_67hvk"]
 [ext_resource type="PackedScene" uid="uid://c78lelucxrbja" path="res://Entities/Player/player.tscn" id="2_xgp3s"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_mj8jy"]
-
 [node name="Main" type="Node3D"]
 
 [node name="Campsite" parent="." instance=ExtResource("1_nk6hs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.239094, 0.0548292, -0.0537138)
 
 [node name="PlayerManager" type="Node3D" parent="."]
 script = ExtResource("2_67hvk")
 
 [node name="Player1" parent="PlayerManager" instance=ExtResource("2_xgp3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168215, 0.5, 1.48764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
 
 [node name="Player2" parent="PlayerManager" instance=ExtResource("2_xgp3s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 0.5, 0)
 
 [node name="Player3" parent="PlayerManager" instance=ExtResource("2_xgp3s")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.238308, 0.500413, -1.55298)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -1.5)
 
 [node name="Player4" parent="PlayerManager" instance=ExtResource("2_xgp3s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.38829, 0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0.5, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152548, 0, 1.94042)
-mesh = SubResource("CylinderMesh_mj8jy")
+[node name="Camera3D" type="Camera3D" parent="."]

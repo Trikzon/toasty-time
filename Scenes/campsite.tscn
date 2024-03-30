@@ -21,7 +21,7 @@ light_energy = 0.25
 shadow_enabled = true
 
 [node name="Campfire" parent="." instance=ExtResource("2_baitl")]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.670548, 0.165485, -0.422881)
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.63204, 0.165485, -0.443179)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39241, 3.09059, 1.75739)
@@ -44,4 +44,4 @@ transform = Transform3D(-0.265518, 0, -0.00770875, 0, 0.26563, 0, 0.00770875, 0,
 transform = Transform3D(0.0116085, 0, 0.259741, 0, 0.26, 0, -0.259741, 0, 0.0116085, 0.0988367, 0.185346, 1.76515)
 
 [node name="Fire" parent="." instance=ExtResource("4_teaff")]
-transform = Transform3D(3.595, 0, 0, 0, 2.75598, 0, 0, 0, 3.595, 0, 0.198808, 0)
+transform = Transform3D(3.595, 0, 0, 0, 2.75598, 0, 0, 0, 3.595, 0, 0.25, 0)
