@@ -14,10 +14,7 @@ extends Node3D
 var stick_distance = 0
 var rotation_position = 0
 
-var selected: bool = false:
-	set(value):
-		$Camera3D.current = value
-		selected = value
+var selected: bool = false
 
 func _ready():
 	$Body.visible = false
@@ -30,7 +27,7 @@ func _physics_process(delta):
 		marshmallow_cook+=delta*COOK_SPEED*stick_distance
 	if marshmallow_cook>=marshmallow_cook_time&&stick_distance<=0.2:
 		prep_marshmallow()
-	print(marshmallow_cook)
+	#print(marshmallow_cook)
 	
 func prep_marshmallow():
 	marshmallow_cook=0.0

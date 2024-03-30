@@ -18,9 +18,6 @@ script = ExtResource("1_ws5tq")
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jymoa")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-
 [node name="Stick" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.91848, 0.105557, 0.381118, -6.76858e-09, 0.963719, -0.266919, -0.395466, 0.24516, 0.885157, 0.325516, 0.0412667, -0.0909761)
 mesh = SubResource("BoxMesh_ftbx7")
