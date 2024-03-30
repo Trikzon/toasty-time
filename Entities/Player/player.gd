@@ -38,9 +38,9 @@ func _physics_process(delta):
 			cooked_count+=int(marshmallow_cook_values[i] >= marshmallow_cook_time)
 	
 	#debug
-	for i in range(360):
-		if i%30==0&&selected:
-			print(marshmallow_cook_values[i])
+	#for i in range(360):
+		#if i%30==0&&selected:
+			#print(marshmallow_cook_values[i])
 	
 	if (cooked_count/360.0)>=(1.0-COOK_TOL):
 		prep_marshmallow()
