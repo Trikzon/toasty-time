@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c78lelucxrbja"]
+
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ws5tq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jymoa"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ftbx7"]
+size = Vector3(0.05, 0.05, 0.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_63ydo"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_ws5tq")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jymoa")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="Stick" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.970825, 0.0640038, 0.231088, -3.62149e-09, 0.963719, -0.266919, -0.239788, 0.259132, 0.935603, 0.18409, 0.00919485, -0.548477)
+mesh = SubResource("BoxMesh_ftbx7")
+
+[node name="Marshmallow" type="MeshInstance3D" parent="Stick"]
+transform = Transform3D(1, 0, 2.98023e-08, -1.49012e-08, 1, 1.49012e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08, 0, -0.25)
+mesh = SubResource("BoxMesh_63ydo")
