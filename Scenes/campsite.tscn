@@ -1,27 +1,36 @@
 [gd_scene load_steps=5 format=3 uid="uid://eiodor25xd0g"]
 
-[ext_resource type="PackedScene" uid="uid://c78lelucxrbja" path="res://Entities/Player/player.tscn" id="1_xl7i2"]
-[ext_resource type="PackedScene" uid="uid://brja6oo67sp1k" path="res://campfire.blend" id="2_qk33m"]
+[ext_resource type="PackedScene" uid="uid://vhld3pskgubm" path="res://Models/campfire.blend" id="2_baitl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_te1vq"]
 albedo_color = Color(0.113725, 0.113725, 0.113725, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1rpqc"]
 material = SubResource("StandardMaterial3D_te1vq")
-size = Vector2(10, 10)
+size = Vector2(30, 30)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8gxqu"]
+points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
 
 [node name="Campsite" type="Node3D"]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_1rpqc")
+[node name="Ground" type="StaticBody3D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_xl7i2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.24418)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_1rpqc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConvexPolygonShape3D_8gxqu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3, 0)
 light_energy = 0.25
 shadow_enabled = true
 
-[node name="campfire" parent="." instance=ExtResource("2_qk33m")]
-transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, -0.522953, 0.107027, -0.563496)
+[node name="Campfire" parent="." instance=ExtResource("2_baitl")]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.670548, 0.165485, -0.422881)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39241, 4.13295, 2.13118)
+omni_range = 2.0

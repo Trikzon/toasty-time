@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmcw362q21ryv"]
+
+[ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_impk5"]
+[ext_resource type="PackedScene" uid="uid://c78lelucxrbja" path="res://Entities/Player/player.tscn" id="2_lhxpq"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Campsite" parent="." instance=ExtResource("1_impk5")]
+
+[node name="Player" parent="." instance=ExtResource("2_lhxpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.24418)
