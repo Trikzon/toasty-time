@@ -15,10 +15,8 @@ var marshmallow_cook_values: Array[float] = []
 var most_recent_score=0
 var stick_distance = 0
 var rotation_position = 0
-var selected: bool = false:
-	set(value):
-		$Camera3D.current = value
-		selected = value
+
+var selected: bool = false
 
 func _ready():
 	$Body.visible = false

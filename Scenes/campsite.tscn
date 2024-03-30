@@ -1,12 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://eiodor25xd0g"]
+[gd_scene load_steps=12 format=3 uid="uid://eiodor25xd0g"]
 
-[ext_resource type="PackedScene" uid="uid://vhld3pskgubm" path="res://Models/campfire.blend" id="2_baitl"]
+[ext_resource type="PackedScene" uid="uid://bu8je21b2q3v" path="res://Models/campfire.blend" id="2_baitl"]
 [ext_resource type="PackedScene" uid="uid://bnumv4lupl06a" path="res://Models/ground.blend" id="2_hjcl4"]
 [ext_resource type="PackedScene" uid="uid://cvxyib3ly5uy2" path="res://Models/LogBench.blend" id="3_58axw"]
 [ext_resource type="PackedScene" uid="uid://ucmv7233n81u" path="res://fire.tscn" id="4_teaff"]
+[ext_resource type="Texture2D" uid="uid://dodkr3ganh5x1" path="res://volumetric_fog_quad_mesh_texture.webp" id="5_0ymxj"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8gxqu"]
 points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6mnyy"]
+sky_top_color = Color(0.0941176, 0.121569, 0.156863, 1)
+sky_horizon_color = Color(0.188235, 0.180392, 0.113725, 1)
+ground_horizon_color = Color(0.2, 0.168627, 0.133333, 1)
+
+[sub_resource type="Sky" id="Sky_50a1d"]
+sky_material = SubResource("ProceduralSkyMaterial_6mnyy")
+
+[sub_resource type="Environment" id="Environment_ju3ca"]
+background_mode = 2
+sky = SubResource("Sky_50a1d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyuid"]
+shading_mode = 0
+albedo_color = Color(0.396078, 0.396078, 0.396078, 1)
+albedo_texture = ExtResource("5_0ymxj")
+billboard_mode = 1
+proximity_fade_enabled = true
+proximity_fade_distance = 14.1
+distance_fade_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_1muuv"]
+material = SubResource("StandardMaterial3D_gyuid")
 
 [node name="Campsite" type="Node3D"]
 
@@ -15,13 +40,8 @@ points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConvexPolygonShape3D_8gxqu")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3, 0)
-light_energy = 0.25
-shadow_enabled = true
-
 [node name="Campfire" parent="." instance=ExtResource("2_baitl")]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.63204, 0.165485, -0.443179)
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.670548, 0.165485, -0.422881)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39241, 3.09059, 1.75739)
@@ -44,4 +64,17 @@ transform = Transform3D(-0.265518, 0, -0.00770875, 0, 0.26563, 0, 0.00770875, 0,
 transform = Transform3D(0.0116085, 0, 0.259741, 0, 0.26, 0, -0.259741, 0, 0.0116085, 0.0988367, 0.185346, 1.76515)
 
 [node name="Fire" parent="." instance=ExtResource("4_teaff")]
-transform = Transform3D(3.595, 0, 0, 0, 2.75598, 0, 0, 0, 3.595, 0, 0.25, 0)
+transform = Transform3D(3.595, 0, 0, 0, 2.75598, 0, 0, 0, 3.595, 0, 0.198808, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ju3ca")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.483924, 0.87511, 0, -0.87511, 0.483924, 0, 3, 0)
+light_energy = 0.25
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.84245, 0, 0, 0, 3.02036, 0, 0, 0, 1.95806, 0.260204, 0.430956, -8.41722)
+visible = false
+mesh = SubResource("QuadMesh_1muuv")
