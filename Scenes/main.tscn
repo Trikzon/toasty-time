@@ -9,4 +9,4 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.239094, 0.0548292, -0.0537138)
 
 [node name="Player" parent="." instance=ExtResource("2_lhxpq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.24418)
+transform = Transform3D(0.955139, 0, 0.296158, 0, 1, 0, -0.296158, 0, 0.955139, 0, 0.5, 1.24418)
