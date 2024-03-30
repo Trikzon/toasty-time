@@ -1,3 +1,4 @@
+class_name Player
 extends Node3D
 
 @export var FORWARD_SPEED: float = 0.01
@@ -10,7 +11,22 @@ extends Node3D
 var stick_distance = 0
 var rotation_position = 0
 
+var selected: bool = false:
+	set(value):
+		$Camera3D.current = value
+		selected = value
+
+
+func _ready():
+	$Body.visible = false
+
+
 func _process(delta):
+	if selected:
+		input()
+
+
+func input():
 	var forward_direction = Input.get_axis("move_marshmallow_back", "move_marshmallow_forward")
 	var rotation_direction = Input.get_axis("rotate_marshmallow_clockwise", "rotate_marshmallow_counterclockwise")
 	
