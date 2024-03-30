@@ -1,13 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://eiodor25xd0g"]
 
 [ext_resource type="PackedScene" uid="uid://vhld3pskgubm" path="res://Models/campfire.blend" id="2_baitl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_te1vq"]
-albedo_color = Color(0.113725, 0.113725, 0.113725, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1rpqc"]
-material = SubResource("StandardMaterial3D_te1vq")
-size = Vector2(30, 30)
+[ext_resource type="PackedScene" uid="uid://bnumv4lupl06a" path="res://Models/ground.blend" id="2_hjcl4"]
+[ext_resource type="PackedScene" uid="uid://cvxyib3ly5uy2" path="res://Models/LogBench.blend" id="3_58axw"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8gxqu"]
 points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
@@ -15,10 +10,6 @@ points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
 [node name="Campsite" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_1rpqc")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConvexPolygonShape3D_8gxqu")
@@ -32,6 +23,21 @@ shadow_enabled = true
 transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.670548, 0.165485, -0.422881)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
-transform = Transform3D(4.25532, 0, 0, 0, 4.25532, 0, 0, 0, 4.25532, 2.39241, 3.09059, 1.75739)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39241, 3.09059, 1.75739)
 light_color = Color(0.631373, 0.443137, 0.309804, 1)
 omni_range = 2.0
+
+[node name="ground" parent="." instance=ExtResource("2_hjcl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204377, -0.761308, 0.264805)
+
+[node name="LogBench" parent="." instance=ExtResource("3_58axw")]
+transform = Transform3D(0.25885, 0, 0.024432, 0, 0.26, 0, -0.024432, 0, 0.25885, -1.76382, 0.189014, 0)
+
+[node name="LogBench2" parent="." instance=ExtResource("3_58axw")]
+transform = Transform3D(-0.00149643, 0, -0.262996, 0, 0.263, 0, 0.262996, 0, -0.00149643, -0.115168, 0.190774, -1.50195)
+
+[node name="LogBench3" parent="." instance=ExtResource("3_58axw")]
+transform = Transform3D(-0.265518, 0, -0.00770875, 0, 0.26563, 0, 0.00770875, 0, -0.265518, 1.61777, 0.17634, 0.149484)
+
+[node name="LogBench4" parent="." instance=ExtResource("3_58axw")]
+transform = Transform3D(0.0116085, 0, 0.259741, 0, 0.26, 0, -0.259741, 0, 0.0116085, 0.0988367, 0.185346, 1.76515)
