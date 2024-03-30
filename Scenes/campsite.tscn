@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://eiodor25xd0g"]
+[gd_scene load_steps=5 format=3 uid="uid://eiodor25xd0g"]
 
 [ext_resource type="PackedScene" uid="uid://c78lelucxrbja" path="res://Entities/Player/player.tscn" id="1_xl7i2"]
 [ext_resource type="PackedScene" uid="uid://brja6oo67sp1k" path="res://campfire.blend" id="2_qk33m"]
@@ -10,20 +10,10 @@ albedo_color = Color(0.113725, 0.113725, 0.113725, 1)
 material = SubResource("StandardMaterial3D_te1vq")
 size = Vector2(10, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_u18t8"]
-
 [node name="Campsite" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_1rpqc")
-
-[node name="Campfire" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
-mesh = SubResource("BoxMesh_u18t8")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00993, 0)
-light_color = Color(1, 0.733333, 0.25098, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_xl7i2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.24418)
@@ -34,4 +24,4 @@ light_energy = 0.25
 shadow_enabled = true
 
 [node name="campfire" parent="." instance=ExtResource("2_qk33m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69651, -1.19209e-07, 0.203447)
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, -0.522953, 0.107027, -0.563496)
