@@ -10,14 +10,11 @@ var selected_player: int:
 		selected_player = posmod(value, players.size())
 		players[selected_player].selected = true
 
-
 func _ready():
 	for child in get_children():
 		if child is Player:
 			players.append(child)
-	
 	selected_player = 0
-
 
 func _process(delta):
 	if Input.is_action_just_pressed("swap_clockwise"):
