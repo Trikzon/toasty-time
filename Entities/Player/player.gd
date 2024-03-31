@@ -1,9 +1,9 @@
 class_name Player
 extends Node3D
 
-@export var FORWARD_SPEED: float = 0.01
+@export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
-@export var ROTATION_SPEED: float = 0.01
+@export var ROTATION_SPEED: float = 0.02
 @export var COOK_SPEED: float = 1.0
 @export var COOK_TOL: float = 0.1
 
@@ -84,6 +84,8 @@ func prep_marshmallow():
 	if cook_closeness<=10:
 		most_recent_score+=1
 	Globals.score+=most_recent_score
+	Globals.most_recent_score=most_recent_score
+	Globals.time_since_swap=0
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)

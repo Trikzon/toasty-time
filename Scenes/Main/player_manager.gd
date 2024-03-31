@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var camera_animation_player: AnimationPlayer = $Camera3D/AnimationPlayer
-
+@export var ANIMATION_SPEED=3.0
 @export var selected_player: int:
 	set(value):
 		for player in players:
@@ -32,10 +32,10 @@ func move_camera():
 		return
 	
 	if Input.is_action_just_pressed("swap_clockwise"):
-		camera_animation_player.play("%s_to_%s" % [selected_player, posmod(selected_player + 1, players.size())])
+		camera_animation_player.play("%s_to_%s" % [selected_player, posmod(selected_player + 1, players.size())],-1,ANIMATION_SPEED)
 		selected_player = posmod(selected_player + 1, players.size())
 	if Input.is_action_just_pressed("swap_counterclockwise"):
-		camera_animation_player.play_backwards("%s_to_%s" % [posmod(selected_player - 1, players.size()), selected_player])
+		camera_animation_player.play("%s_to_%s" % [posmod(selected_player - 1, players.size()), selected_player],-1,-1*ANIMATION_SPEED,true)
 		selected_player = posmod(selected_player - 1, players.size())
 
 

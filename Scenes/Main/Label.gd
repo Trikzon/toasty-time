@@ -9,4 +9,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	text= "Score: %s" % Globals.score
+	if Globals.time_since_swap<300:
+		Globals.time_since_swap+=1
+		text= "Score: %s " % Globals.score
+		if Globals.most_recent_score>=11:
+			text=str(text,"★★★")
+		elif Globals.most_recent_score>=6:
+			text=str(text,"★★☆")
+		else:
+			text=str(text,"★☆☆")
 	pass
