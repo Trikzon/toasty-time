@@ -1,7 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmj8i681meopn"]
+[gd_scene load_steps=4 format=3 uid="uid://bmj8i681meopn"]
 
 [ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_fmoc5"]
+[ext_resource type="FontFile" uid="uid://d2rmho01g4uq2" path="res://Camping.ttf" id="2_gbmx4"]
+[ext_resource type="Script" path="res://Scenes/EndScreen/Button.gd" id="3_4q7x8"]
 
 [node name="StartScreen" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.442022, 0, 0.897004, 0, 1, 0, -0.897004, 0, 0.442022, 1.20249, 0.917743, 1.49529)
+
 [node name="Campsite" parent="." instance=ExtResource("1_fmoc5")]
+run_game = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 63.0
+offset_top = 61.0
+offset_right = 553.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("2_gbmx4")
+theme_override_font_sizes/font_size = 96
+text = "Toasty Time"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -431.0
+offset_top = -248.0
+offset_right = -120.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_gbmx4")
+theme_override_font_sizes/font_size = 96
+text = "Play"
+script = ExtResource("3_4q7x8")
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]
