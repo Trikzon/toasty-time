@@ -18,4 +18,5 @@ func _process(delta):
 			text=str(text,"★★☆")
 		else:
 			text=str(text,"★☆☆")
+	text=str(text,"\nTime Remaining: ",int(Globals.GAME_LENGTH-Globals.game_time))
 	pass
