@@ -1,8 +1,12 @@
 extends Node3D
 
+@export var run_game: bool = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not run_game:
+		return
+	
 	if Globals.game_time > Globals.GAME_LENGTH - 2.5:
 		for child in $Campfire.get_children():
 			if child is OmniLight3D:
