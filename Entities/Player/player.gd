@@ -46,11 +46,6 @@ func _physics_process(delta):
 		for i in range(360):
 			cooked_count+=int(marshmallow_cook_values[i] >= marshmallow_cook_time)
 	
-	#debug
-	#for i in range(360):
-		#if i%30==0&&selected:
-			#print(marshmallow_cook_values[i])
-	
 	if (cooked_count/360.0)>=(1.0-COOK_TOL):
 		prep_marshmallow()
 	
@@ -92,12 +87,10 @@ func prep_marshmallow():
 	Globals.score+=most_recent_score
 	Globals.most_recent_score=most_recent_score
 	Globals.time_since_swap=0
-	print(std_div)
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
 	marshmallow_cook_time=randf_range(10,15)
-	#add animation for marshmallow swap
 func input():
 	var forward_direction = Input.get_axis("move_marshmallow_back", "move_marshmallow_forward")
 	var rotation_direction = Input.get_axis("rotate_marshmallow_clockwise", "rotate_marshmallow_counterclockwise")
