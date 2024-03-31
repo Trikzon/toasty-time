@@ -4,7 +4,7 @@ extends Node3D
 @export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
 @export var ROTATION_SPEED: float = 0.05
-@export var COOK_SPEED: float = 2.0
+@export var COOK_SPEED: float = 1.5
 @export var COOK_TOL: float = 0.2
 
 @onready var stick: Node3D = $StickPivot/Stick
