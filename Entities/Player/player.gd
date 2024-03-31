@@ -24,7 +24,10 @@ func _ready():
 	for _i in range(360):
 		marshmallow_cook_values.append(0.0)
 	
-	prep_marshmallow()
+	marshmallow_cook_values.clear()
+	for _i in range(360):
+		marshmallow_cook_values.append(0)
+	marshmallow_cook_time=randf_range(10,15)
 
 func _physics_process(delta):
 	if selected:
@@ -50,13 +53,37 @@ func prep_marshmallow():
 	for i in range(360):
 		mean_cook+=marshmallow_cook_values[i]
 	mean_cook/=360
-	var temp_sum=0
+	var std_div=0
 	for i in range(360):
-		temp_sum+=pow(marshmallow_cook_values[i]-mean_cook,2)
-	temp_sum/=360
-	#most_recent_score
-	#sqrt(temp_sum)
-	#abs(marshmallow_cook_time-mean_cook)
+		std_div+=pow(marshmallow_cook_values[i]-mean_cook,2)
+	std_div=sqrt(std_div/360)
+	var cook_closeness=abs(marshmallow_cook_time-mean_cook)
+	most_recent_score=3
+	if std_div<=10:
+		most_recent_score+=1
+	if std_div<=10:
+		most_recent_score+=1
+	if std_div<=10:
+		most_recent_score+=1
+	if std_div<=10:
+		most_recent_score+=1
+	if std_div<=10:
+		most_recent_score+=1
+	if std_div<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	if cook_closeness<=10:
+		most_recent_score+=1
+	Globals.score+=most_recent_score
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
