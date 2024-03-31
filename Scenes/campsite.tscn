@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bnumv4lupl06a" path="res://Models/ground.blend" id="2_hjcl4"]
 [ext_resource type="PackedScene" uid="uid://cvxyib3ly5uy2" path="res://Models/LogBench.blend" id="3_58axw"]
 [ext_resource type="PackedScene" uid="uid://ucmv7233n81u" path="res://fire.tscn" id="4_teaff"]
-[ext_resource type="Texture2D" uid="uid://ba5xl5h6e712d" path="res://Models/NightSky.png" id="5_8le2a"]
+[ext_resource type="Texture2D" uid="uid://dxhss1j4f7jxd" path="res://Models/DiffSky.png" id="6_kuxw1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tgyaw"]
-panorama = ExtResource("5_8le2a")
+panorama = ExtResource("6_kuxw1")
 
 [sub_resource type="Sky" id="Sky_50a1d"]
 sky_material = SubResource("PanoramaSkyMaterial_tgyaw")
