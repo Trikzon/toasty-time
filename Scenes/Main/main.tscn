@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b21eanp0cffs3"]
+[gd_scene load_steps=11 format=3 uid="uid://b21eanp0cffs3"]
 
 [ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_nk6hs"]
 [ext_resource type="Script" path="res://Scenes/Main/player_manager.gd" id="2_67hvk"]
@@ -157,6 +157,8 @@ _data = {
 "3_to_0": SubResource("Animation_cl7e5")
 }
 
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_dptxc"]
+
 [node name="Main" type="Node3D"]
 
 [node name="Campsite" parent="." instance=ExtResource("1_nk6hs")]
@@ -194,5 +196,8 @@ theme_override_colors/font_color = Color(0.737255, 0.603922, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 script = ExtResource("4_i8302")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_dptxc")
 
 [connection signal="animation_finished" from="PlayerManager/Camera3D/AnimationPlayer" to="PlayerManager" method="_on_animation_player_animation_finished"]
