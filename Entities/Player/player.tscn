@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c78lelucxrbja"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ws5tq"]
+[ext_resource type="ArrayMesh" uid="uid://c3l03q4x6ka5u" path="res://Models/marshmallow_mesh.res" id="2_523t5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jymoa"]
 radius = 0.25
@@ -8,9 +9,6 @@ height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ftbx7"]
 size = Vector3(0.05, 0.05, 0.75)
-
-[sub_resource type="BoxMesh" id="BoxMesh_63ydo"]
-size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_ws5tq")
@@ -23,5 +21,5 @@ transform = Transform3D(0.91848, 0.105557, 0.381118, -6.76858e-09, 0.963719, -0.
 mesh = SubResource("BoxMesh_ftbx7")
 
 [node name="Marshmallow" type="MeshInstance3D" parent="Stick"]
-transform = Transform3D(1, 0, 2.98023e-08, -1.49012e-08, 1, 1.49012e-08, 1.49012e-08, 1.49012e-08, 1, 2.98023e-08, 0, -0.25)
-mesh = SubResource("BoxMesh_63ydo")
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 2.98023e-08, 0, -0.25)
+mesh = ExtResource("2_523t5")
