@@ -4,19 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://bnumv4lupl06a" path="res://Models/ground.blend" id="2_hjcl4"]
 [ext_resource type="PackedScene" uid="uid://cvxyib3ly5uy2" path="res://Models/LogBench.blend" id="3_58axw"]
 [ext_resource type="PackedScene" uid="uid://ucmv7233n81u" path="res://fire.tscn" id="4_teaff"]
-[ext_resource type="PackedScene" uid="uid://cshigdowoprvx" path="res://Models/treeVariationblend.blend" id="5_wmbl6"]
+[ext_resource type="Texture2D" uid="uid://ba5xl5h6e712d" path="res://Models/NightSky.png" id="5_8le2a"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6mnyy"]
-sky_top_color = Color(0.0941176, 0.121569, 0.156863, 1)
-sky_horizon_color = Color(0.188235, 0.180392, 0.113725, 1)
-ground_horizon_color = Color(0.2, 0.168627, 0.133333, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tgyaw"]
+panorama = ExtResource("5_8le2a")
 
 [sub_resource type="Sky" id="Sky_50a1d"]
-sky_material = SubResource("ProceduralSkyMaterial_6mnyy")
+sky_material = SubResource("PanoramaSkyMaterial_tgyaw")
 
 [sub_resource type="Environment" id="Environment_ju3ca"]
 background_mode = 2
 sky = SubResource("Sky_50a1d")
+sky_rotation = Vector3(0, 0.436332, 0)
 
 [node name="Campsite" type="Node3D"]
 
@@ -57,35 +56,9 @@ environment = SubResource("Environment_ju3ca")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.483924, 0.87511, 0, -0.87511, 0.483924, 0, 3, 0)
-light_energy = 0.25
+visible = false
+light_energy = 0.05
 shadow_enabled = true
 
 [node name="Trees" type="Node3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.938077, -0.0375776, 6.64186)
-
-[node name="Tree" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.1239, -0.978992, -104.319)
-
-[node name="Tree3" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(1, 0, 0, 0, 1.25879, 0, 0, 0, 1.10418, 77.529, -1.23235, 11.2641)
-
-[node name="Tree9" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(1.81848, 0, 0, 0, 1.06825, 0, 0, 0, 1.54095, -123.612, -1.04581, 40.09)
-
-[node name="Tree2" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(0.536678, 0, 0, 0, 0.714492, 0, 0, 0, -1.06188, 35.0352, -0.699482, -104.319)
-
-[node name="Tree6" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(0.541604, 0, 0, 0, 0.405429, 0, 0, 0, -0.610589, -41.9634, -0.396912, 54.8753)
-
-[node name="Tree8" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(0.541604, 0, 0, 0, 0.733978, 0, 0, 0, -0.610589, -62.4394, -0.718559, -54.5682)
-
-[node name="Tree4" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(1.00794, 0, 0, 0, 0.80218, 0, 0, 0, -1.1922, 73.1881, -0.785328, -89.5546)
-
-[node name="Tree5" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(2.27233, 0, 0, 0, 0.952375, 0, 0, 0, -1.5585, 34.9908, -0.932368, 47.7326)
-
-[node name="Tree7" parent="Trees" instance=ExtResource("5_wmbl6")]
-transform = Transform3D(2.27233, 0, 0, 0, 1.23176, 0, 0, 0, -1.5585, -83.4433, -1.20588, -77.095)
