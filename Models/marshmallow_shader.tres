@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d32d7bvhf7uix" path="res://Models/GmallowC.png" id="1_hupt3"]
 [ext_resource type="Texture2D" uid="uid://bsa3ox842amjf" path="res://Models/LmallowC.png" id="2_ax5j0"]
 [ext_resource type="Texture2D" uid="uid://u7fn8ldhhxxi" path="res://Models/EmallowC.png" id="2_c0ir2"]
-[ext_resource type="Texture2D" uid="uid://bibwivaacrf1q" path="res://Models/Grunge-Mask-40.png" id="2_dgxd0"]
 [ext_resource type="Texture2D" uid="uid://dywd1xo1x1j7b" path="res://Models/WmallowC.png" id="3_i0xlw"]
 [ext_resource type="Texture2D" uid="uid://s8n7nsto1jhm" path="res://Models/BmallowC.png" id="3_sq3rh"]
 [ext_resource type="Texture2D" uid="uid://c1ekijxopavsb" path="res://Models/WmallowN.png" id="4_0oh4c"]
@@ -51,10 +50,12 @@ texture = ExtResource("5_37omv")
 expanded_output_ports = [0]
 texture = ExtResource("2_c0ir2")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ksvdp"]
+
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_td8jo"]
 expanded_output_ports = [0]
 source = 5
-texture = ExtResource("2_dgxd0")
+texture = SubResource("CompressedTexture2D_ksvdp")
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_q3jyd"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
@@ -87,7 +88,7 @@ op_type = 6
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1r3gl"]
 expanded_output_ports = [0]
 source = 5
-texture = ExtResource("2_dgxd0")
+texture = SubResource("CompressedTexture2D_ksvdp")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tsgi7"]
 texture = ExtResource("3_i0xlw")
@@ -212,7 +213,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1975.76, -151.085)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_cssxw")
 nodes/fragment/2/position = Vector2(-1900, -740)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_1r3gl")

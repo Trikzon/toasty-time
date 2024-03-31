@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmj8i681meopn"]
+
+[ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_fmoc5"]
+
+[node name="StartScreen" type="Node3D"]
+
+[node name="Campsite" parent="." instance=ExtResource("1_fmoc5")]

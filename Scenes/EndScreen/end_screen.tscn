@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsgp0fwhdqnav"]
+
+[ext_resource type="Script" path="res://Scenes/Main/Label.gd" id="1_3qhw5"]
+[ext_resource type="Texture2D" uid="uid://ba5xl5h6e712d" path="res://Models/NightSky.png" id="1_kmbf5"]
+[ext_resource type="FontFile" uid="uid://d2rmho01g4uq2" path="res://Camping.ttf" id="2_rcbxv"]
+[ext_resource type="Script" path="res://Scenes/EndScreen/Button.gd" id="4_mlj11"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -404.0
+offset_top = -442.0
+offset_right = 1516.0
+offset_bottom = 1478.0
+texture = ExtResource("1_kmbf5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -16.5
+offset_right = 41.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rcbxv")
+theme_override_font_sizes/font_size = 48
+text = "Score: "
+script = ExtResource("1_3qhw5")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 81.0
+offset_right = 245.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_rcbxv")
+theme_override_font_sizes/font_size = 96
+text = "Toasty Time"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -144.0
+offset_right = 102.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_rcbxv")
+theme_override_font_sizes/font_size = 48
+text = "Try Again"
+script = ExtResource("4_mlj11")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
