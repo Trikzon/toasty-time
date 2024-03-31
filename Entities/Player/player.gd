@@ -5,7 +5,7 @@ extends Node3D
 @export var MAX_STICK_DISTANCE: float = 0.35
 @export var ROTATION_SPEED: float = 0.05
 @export var COOK_SPEED: float = 2.0
-@export var COOK_TOL: float = 0.1
+@export var COOK_TOL: float = 0.2
 
 @onready var stick: Node3D = $StickPivot/Stick
 @onready var marshmallow: MeshInstance3D = $StickPivot/Stick/Marshmallow
