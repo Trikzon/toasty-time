@@ -38,6 +38,7 @@ theme_override_fonts/font = ExtResource("2_rcbxv")
 theme_override_font_sizes/font_size = 48
 text = "Score: "
 script = ExtResource("1_3qhw5")
+run_game = false
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1

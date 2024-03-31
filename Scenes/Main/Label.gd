@@ -1,5 +1,6 @@
 extends Label
 
+@export var run_game: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +19,8 @@ func _process(delta):
 			text=str(text,"★★☆")
 		else:
 			text=str(text,"★☆☆")
-	text=str(text,"\nTime Remaining: ",int(Globals.GAME_LENGTH-Globals.game_time))
+			
+	
+	if run_game:
+		text=str(text,"\nTime Remaining: ",int(Globals.GAME_LENGTH-Globals.game_time))
 	pass
