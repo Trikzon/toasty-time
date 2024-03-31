@@ -1,6 +1,6 @@
 extends Node
 
-const GAME_LENGTH = 10
+const GAME_LENGTH = 60
 
 var score: int = 0
 var time_since_swap: int = 300
