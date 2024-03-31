@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://eiodor25xd0g"]
+[gd_scene load_steps=10 format=3 uid="uid://eiodor25xd0g"]
 
+[ext_resource type="Script" path="res://Scenes/campsite.gd" id="1_malar"]
 [ext_resource type="PackedScene" uid="uid://bu8je21b2q3v" path="res://Models/campfire.blend" id="2_baitl"]
 [ext_resource type="PackedScene" uid="uid://bnumv4lupl06a" path="res://Models/ground.blend" id="2_hjcl4"]
 [ext_resource type="PackedScene" uid="uid://cvxyib3ly5uy2" path="res://Models/LogBench.blend" id="3_58axw"]
@@ -15,9 +16,10 @@ sky_material = SubResource("PanoramaSkyMaterial_tgyaw")
 [sub_resource type="Environment" id="Environment_ju3ca"]
 background_mode = 2
 sky = SubResource("Sky_50a1d")
-sky_rotation = Vector3(0, 0.436332, 0)
+sky_rotation = Vector3(0, 1.03498, 0)
 
 [node name="Campsite" type="Node3D"]
+script = ExtResource("1_malar")
 
 [node name="Ground" parent="." instance=ExtResource("2_hjcl4")]
 transform = Transform3D(1.03438, 0, 0, 0, 1.00177, 0, 0, 0, 1.02925, 0.0167157, -0.761308, 0.0465001)
@@ -46,7 +48,28 @@ transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, -0.670548, 0.1654
 [node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39241, 3.09059, 1.75739)
 light_color = Color(0.631373, 0.443137, 0.309804, 1)
-omni_range = 2.0
+omni_range = 4.0
+omni_attenuation = 0.017337
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(4.25532, 0, 0, 0, 4.25532, 0, 0, 0, 4.25532, -2.02339, 3.09059, 2.06789)
+light_color = Color(0.631373, 0.443137, 0.309804, 1)
+omni_range = 1.5
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(4.25532, 0, 0, 0, 4.25532, 0, 0, 0, 4.25532, 3.36068, 3.09059, -2.70326)
+light_color = Color(0.631373, 0.443137, 0.309804, 1)
+omni_range = 1.5
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(4.25532, 0, 0, 0, 4.25532, 0, 0, 0, 4.25532, 7.19927, 3.09059, 2.43823)
+light_color = Color(0.631373, 0.443137, 0.309804, 1)
+omni_range = 1.5
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(4.25532, 0, 0, 0, 4.25532, 0, 0, 0, 4.25532, 2.87245, 3.09059, 6.42797)
+light_color = Color(0.631373, 0.443137, 0.309804, 1)
+omni_range = 1.5
 
 [node name="Fire" parent="Campfire" instance=ExtResource("4_teaff")]
 transform = Transform3D(15.2979, 0, 0, 0, 11.7276, 0, 0, 0, 15.2979, 2.8534, 0.1418, 1.79949)
@@ -57,7 +80,7 @@ environment = SubResource("Environment_ju3ca")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.483924, 0.87511, 0, -0.87511, 0.483924, 0, 3, 0)
 visible = false
-light_energy = 0.05
+light_energy = 0.025
 shadow_enabled = true
 
 [node name="Trees" type="Node3D" parent="."]
