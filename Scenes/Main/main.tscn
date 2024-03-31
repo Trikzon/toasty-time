@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b21eanp0cffs3"]
+[gd_scene load_steps=15 format=3 uid="uid://b21eanp0cffs3"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_aemok"]
 [ext_resource type="PackedScene" uid="uid://eiodor25xd0g" path="res://Scenes/campsite.tscn" id="1_nk6hs"]
 [ext_resource type="Script" path="res://Scenes/Main/player_manager.gd" id="2_67hvk"]
 [ext_resource type="PackedScene" uid="uid://c78lelucxrbja" path="res://Entities/Player/player.tscn" id="2_xgp3s"]
 [ext_resource type="Script" path="res://Scenes/Main/Label.gd" id="4_i8302"]
+[ext_resource type="FontFile" uid="uid://d2rmho01g4uq2" path="res://Camping.ttf" id="5_1ctig"]
 [ext_resource type="AudioStream" uid="uid://bu3arxtub8bdx" path="res://Sounds/Crickets.wav" id="5_mmitl"]
 [ext_resource type="AudioStream" uid="uid://dvg8kucja0517" path="res://Sounds/Fire.wav" id="6_6mvmj"]
 [ext_resource type="AudioStream" uid="uid://b0v2pexbe7bo5" path="res://Sounds/Music.wav" id="7_wn4gt"]
@@ -192,11 +193,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0.5, 0)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 24.0
-offset_right = 262.0
-offset_bottom = 98.0
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 251.0
+offset_bottom = 114.0
 theme_override_colors/font_color = Color(0.737255, 0.603922, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_1ctig")
 theme_override_font_sizes/font_size = 36
 script = ExtResource("4_i8302")
 
