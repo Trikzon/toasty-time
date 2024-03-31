@@ -4,7 +4,7 @@ extends Node3D
 @export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
 @export var ROTATION_SPEED: float = 0.05
-@export var COOK_SPEED: float = 1.5
+@export var COOK_SPEED: float = 10.5
 @export var COOK_TOL: float = 0.2
 
 @onready var stick: Node3D = $StickPivot/Stick
@@ -31,18 +31,21 @@ func _ready():
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
 	marshmallow_cook_time=randf_range(10.0,15.0)
+	
+	stick.global_position = stick_distance * MAX_STICK_DISTANCE * stick.global_transform.basis.y.normalized() + original_pos
+	stick.rotation.y = rotation_position + deg_to_rad(90)
 
 func _physics_process(delta):
 	if selected:
 		input()
-	if(stick_distance>0.2):
+	if(stick_distance>0.3):
 		for i in range(360):
 			marshmallow_cook_values[i]+=(abs(180-(abs(i-(rad_to_deg(rotation_position) as int))))/180.0)*delta*COOK_SPEED*stick_distance
 	
 	set_marshmallow_cook_image()
 	
 	var cooked_count = 0
-	if stick_distance <= 0.2:
+	if stick_distance == 0:
 		for i in range(360):
 			cooked_count+=int(marshmallow_cook_values[i] >= marshmallow_cook_time)
 	
