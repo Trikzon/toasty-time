@@ -107,7 +107,7 @@ func input():
 	
 	rotation_position += rotation_direction * ROTATION_SPEED
 	rotation_position = fposmod(rotation_position, TAU)
-	stick.rotation.y = rotation_position
+	stick.rotation.y = rotation_position + deg_to_rad(90)
 
 
 func set_marshmallow_cook_image():
