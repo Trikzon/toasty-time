@@ -9,6 +9,7 @@ extends Node3D
 		
 		if players.size() > 0 and value != -5:
 			selected_player = value
+		
 
 
 var players: Array[Player] = []
