@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c78lelucxrbja"]
+[gd_scene load_steps=9 format=3 uid="uid://c78lelucxrbja"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ws5tq"]
 [ext_resource type="Shader" uid="uid://b0omcock5chpt" path="res://Models/marshmallow_shader.tres" id="2_qx1nr"]
+[ext_resource type="PackedScene" uid="uid://6i63xpn202cn" path="res://Models/stick.blend" id="3_djdp3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jymoa"]
 radius = 0.25
@@ -56,10 +57,18 @@ script = ExtResource("1_ws5tq")
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jymoa")
 
-[node name="Stick" type="MeshInstance3D" parent="."]
+[node name="StickOld" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.332298, -0.862725, 0.38116, 0.932936, 0.241274, -0.267238, 0.138589, 0.444401, 0.885043, 0.325516, 0.0412667, -0.0909761)
+visible = false
 mesh = SubResource("BoxMesh_ftbx7")
 
-[node name="Marshmallow" type="MeshInstance3D" parent="Stick"]
-transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 2.98023e-08, 0, -0.25)
+[node name="StickPivot" type="Node3D" parent="."]
+transform = Transform3D(0.924346, -0.324312, 0.201015, -0.115514, 0.264248, 0.957512, -0.36365, -0.908292, 0.206794, 0.443333, 0, 0.0837631)
+
+[node name="Stick" parent="StickPivot" instance=ExtResource("3_djdp3")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0)
+
+[node name="Marshmallow" type="MeshInstance3D" parent="StickPivot/Stick"]
+transform = Transform3D(0.666666, 0, 0, 0, 0.666667, 0, 0, 0, 0.666666, 0, 8, 0)
 mesh = SubResource("ArrayMesh_7nscp")
+skeleton = NodePath("../../../StickOld")

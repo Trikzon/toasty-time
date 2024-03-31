@@ -4,11 +4,11 @@ extends Node3D
 @export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
 @export var ROTATION_SPEED: float = 0.02
-@export var COOK_SPEED: float = 10.0
+@export var COOK_SPEED: float = 1.0
 @export var COOK_TOL: float = 0.1
 
-@onready var stick: Node3D = $Stick
-@onready var marshmallow: MeshInstance3D = $Stick/Marshmallow
+@onready var stick: Node3D = $StickPivot/Stick
+@onready var marshmallow: MeshInstance3D = $StickPivot/Stick/Marshmallow
 @onready var original_pos: Vector3 = stick.global_position
 @onready var marshmallow_cook_time
 
@@ -103,11 +103,11 @@ func input():
 	
 	stick_distance += forward_direction * FORWARD_SPEED
 	stick_distance = clamp(stick_distance, 0.0, 1.0)
-	stick.global_position = stick_distance * MAX_STICK_DISTANCE * -stick.global_transform.basis.z.normalized() + original_pos
+	stick.global_position = stick_distance * MAX_STICK_DISTANCE * stick.global_transform.basis.y.normalized() + original_pos
 	
 	rotation_position += rotation_direction * ROTATION_SPEED
 	rotation_position = fposmod(rotation_position, TAU)
-	stick.rotation.z = rotation_position
+	stick.rotation.y = rotation_position
 
 
 func set_marshmallow_cook_image():
