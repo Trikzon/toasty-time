@@ -3,8 +3,8 @@ extends Node3D
 
 @export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
-@export var ROTATION_SPEED: float = 0.02
-@export var COOK_SPEED: float = 10.0
+@export var ROTATION_SPEED: float = 0.05
+@export var COOK_SPEED: float = 2.0
 @export var COOK_TOL: float = 0.1
 
 @onready var stick: Node3D = $StickPivot/Stick
@@ -30,7 +30,7 @@ func _ready():
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
-	marshmallow_cook_time=randf_range(10,15)
+	marshmallow_cook_time=randf_range(10.0,15.0)
 
 func _physics_process(delta):
 	if selected:
@@ -67,31 +67,32 @@ func prep_marshmallow():
 	most_recent_score=3
 	if std_div<=10:
 		most_recent_score+=1
-	if std_div<=10:
+	if std_div<=5:
 		most_recent_score+=1
-	if std_div<=10:
+	if std_div<=3:
 		most_recent_score+=1
-	if std_div<=10:
+	if std_div<=1:
 		most_recent_score+=1
-	if std_div<=10:
+	if std_div<=0.5:
 		most_recent_score+=1
-	if std_div<=10:
+	if std_div<=0.25:
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=marshmallow_cook_time:
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=(marshmallow_cook_time/2):
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=(marshmallow_cook_time/3):
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=(marshmallow_cook_time/4):
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=(marshmallow_cook_time/5):
 		most_recent_score+=1
-	if cook_closeness<=10:
+	if cook_closeness<=(marshmallow_cook_time/6):
 		most_recent_score+=1
 	Globals.score+=most_recent_score
 	Globals.most_recent_score=most_recent_score
 	Globals.time_since_swap=0
+	print(std_div)
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
