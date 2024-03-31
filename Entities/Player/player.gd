@@ -84,6 +84,8 @@ func prep_marshmallow():
 	if cook_closeness<=10:
 		most_recent_score+=1
 	Globals.score+=most_recent_score
+	Globals.most_recent_score=most_recent_score
+	Globals.time_since_swap=0
 	marshmallow_cook_values.clear()
 	for _i in range(360):
 		marshmallow_cook_values.append(0)
