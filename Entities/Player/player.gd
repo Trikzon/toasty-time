@@ -4,10 +4,11 @@ extends Node3D
 @export var FORWARD_SPEED: float = 0.03
 @export var MAX_STICK_DISTANCE: float = 0.35
 @export var ROTATION_SPEED: float = 0.02
-@export var COOK_SPEED: float = 1.0
+@export var COOK_SPEED: float = 10.0
 @export var COOK_TOL: float = 0.1
 
 @onready var stick: Node3D = $Stick
+@onready var marshmallow: MeshInstance3D = $Stick/Marshmallow
 @onready var original_pos: Vector3 = stick.global_position
 @onready var marshmallow_cook_time
 
@@ -20,6 +21,8 @@ var selected: bool = false
 
 func _ready():
 	$Body.visible = false
+	
+	marshmallow.mesh.surface_set_material(0, marshmallow.mesh.surface_get_material(0).duplicate())
 	
 	for _i in range(360):
 		marshmallow_cook_values.append(0.0)
@@ -35,6 +38,9 @@ func _physics_process(delta):
 	if(stick_distance>0.2):
 		for i in range(360):
 			marshmallow_cook_values[i]+=(abs(180-(abs(i-(rad_to_deg(rotation_position) as int))))/180.0)*delta*COOK_SPEED*stick_distance
+	
+	set_marshmallow_cook_image()
+	
 	var cooked_count = 0
 	if stick_distance <= 0.2:
 		for i in range(360):
@@ -102,3 +108,20 @@ func input():
 	rotation_position += rotation_direction * ROTATION_SPEED
 	rotation_position = fposmod(rotation_position, TAU)
 	stick.rotation.z = rotation_position
+
+
+func set_marshmallow_cook_image():
+	var image_texture = ImageTexture.new()
+	var dyn_image = Image.create(1, 360, false, Image.FORMAT_RGBA8)
+	dyn_image.fill(Color(1, 0, 0, 1))
+	
+	for i in range(360):
+		var color = Color(
+			clamp(marshmallow_cook_values[i] / (marshmallow_cook_time/2), 0.0, 1.0), 
+			clamp((marshmallow_cook_values[i]-(marshmallow_cook_time/2))/ (marshmallow_cook_time/2), 0.0, 1.0), 
+			clamp((marshmallow_cook_values[i] - marshmallow_cook_time)/(marshmallow_cook_time/2), 0.0, 1.0), 
+			clamp((marshmallow_cook_values[i] - (marshmallow_cook_time*1.5)) / (marshmallow_cook_time/2), 0.0, 1.0)
+		)
+		dyn_image.set_pixel(0, i, color)
+	
+	(marshmallow.mesh.surface_get_material(0) as ShaderMaterial).set_shader_parameter("CookGradient", ImageTexture.create_from_image(dyn_image))
